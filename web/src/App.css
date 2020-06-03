@@ -4,6 +4,10 @@
   --text-color: ##6C6C80;
 }
 
+html{
+  background-color: #ffecda;
+}
+
 * {
   margin: 0;
   padding: 0;

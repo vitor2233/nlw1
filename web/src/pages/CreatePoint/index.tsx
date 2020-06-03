@@ -3,6 +3,7 @@ import { Link, useHistory } from 'react-router-dom';
 import logo from '../../assets/logo.svg';
 import { FiArrowLeft } from 'react-icons/fi';
 import { Map, TileLayer, Marker } from 'react-leaflet';
+import alertify from 'alertifyjs';
 import { LeafletMouseEvent } from 'leaflet';
 import './styles.css';
 import api from '../../services/api';
@@ -132,7 +133,7 @@ const CreatePoint = () => {
 
         await api.post('points', data);
 
-        alert('Foi');
+        alertify.success('Ponto cadastrado com sucesso!');
 
         history.push('/');
     }
@@ -140,8 +141,8 @@ const CreatePoint = () => {
     return (
         <div id="page-create-point">
             <header>
-                <img src={logo} alt="Ecoleta" />
-                <Link to="/">
+                <img className="imgLogo" src={logo} alt="Ecoleta" />
+                <Link className="btnVoltar" to="/">
                     <FiArrowLeft />
                     Voltar
                 </Link>
@@ -158,6 +159,7 @@ const CreatePoint = () => {
                     <div className="field">
                         <label htmlFor="name">Nome da entidade</label>
                         <input 
+                            required
                             type="text"
                             name="name"
                             id="name"
@@ -169,6 +171,7 @@ const CreatePoint = () => {
                         <div className="field">
                             <label htmlFor="whatsapp">Whatsapp</label>
                             <input 
+                                required
                                 type="text"
                                 name="whatsapp"
                                 id="whatsapp"
@@ -178,6 +181,7 @@ const CreatePoint = () => {
                         <div className="field">
                             <label htmlFor="email">E-mail</label>
                             <input 
+                                required
                                 type="email"
                                 name="email"
                                 id="email"
@@ -204,7 +208,7 @@ const CreatePoint = () => {
                     <div className="field-group">
                         <div className="field">
                             <label htmlFor="uf">Estado (UF)</label>
-                            <select name="uf" id="uf" value={selectedUf} onChange={handleSelectUf}>
+                            <select required name="uf" id="uf" value={selectedUf} onChange={handleSelectUf}>
                                 <option value="0">Selecione uma UF</option>
                                 {ufs.map(uf => (
                                     <option  key={uf} value={uf}>{uf}</option>
@@ -213,7 +217,7 @@ const CreatePoint = () => {
                         </div>
                         <div className="field">
                             <label htmlFor="city">Cidade</label>
-                            <select name="city" id="city" value={selectedCity} onChange={handleSelectCity} >
+                            <select required name="city" id="city" value={selectedCity} onChange={handleSelectCity} >
                                 <option value="0">Selecione uma cidade</option>
                                 {cities.map(city => (
                                     <option  key={city} value={city}>{city}</option>

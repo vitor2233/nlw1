@@ -1,7 +1,12 @@
 #page-home {
     height: 100vh;
   
-    background: url('../../assets/home-background.svg') no-repeat 600px bottom;
+    background: url('../../assets/home-background.svg') no-repeat 600px #ffecda;
+  }
+  @media(max-width: 960px){
+    #page-home {
+      background: url('../../assets/home-background.svg') no-repeat 400px #ffecda;
+    }
   }
   
   #page-home .content {
